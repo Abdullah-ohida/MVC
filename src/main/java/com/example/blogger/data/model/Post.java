@@ -16,7 +16,6 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
 public class Post {
     @Id
@@ -45,6 +44,8 @@ public class Post {
 
     @UpdateTimestamp
     private LocalDateTime dateUpdated;
+
+
 
     public void addComment(Comment... comment){
         if(this.comments == null)

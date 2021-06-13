@@ -31,9 +31,9 @@ public class AuthorServiceImpl implements AuthorService{
         Author author = new Author();
         if(authorDto.getProfileImage() != null && !authorDto.getProfileImage().isEmpty()){
             try {
-                Map<?, ?> uploadResult = cloudinaryService.uploadImage(authorDto.getProfileImage(), ObjectUtils.asMap("blogger/" + extractFileName(authorDto.getProfileImage().getName())));
+                Map<?, ?> uploadResult = cloudinaryService.uploadImage(authorDto.getProfileImage(), ObjectUtils.asMap("public_id", "blogger/" + extractFileName(authorDto.getProfileImage().getName())));
                 author.setProfileImage(String.valueOf(uploadResult.get("url")));
-            } catch (IOException e) {
+            } catch (Exception e) {
                 log.info("Error occurred while uploading image to cloudinary --> {}", e.getMessage());
             }
         }

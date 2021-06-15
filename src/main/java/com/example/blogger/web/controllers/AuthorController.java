@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "api/v1/authors", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE, MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value = "api/v1/authors")
 @CrossOrigin(origins = "*", maxAge = 3600)
 
 public class AuthorController {

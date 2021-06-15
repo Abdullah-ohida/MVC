@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("api/vi/posts")
+@RequestMapping(value="api/v1/posts", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
 @CrossOrigin(origins = "*", maxAge = 3600)
 
 public class PostController {
@@ -79,11 +79,11 @@ public class PostController {
     }
 
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteAllPostsByAuthorId(@PathVariable Long id) {
-        log.info("authorId --> {}", id);
+    @DeleteMapping("{authorId}")
+    public ResponseEntity<?> deleteAllPostsByAuthorId(@PathVariable Long authorId) {
+        log.info("authorId --> {}", authorId);
         try {
-            postService.deleteAllPostByAuthorId(id);
+            postService.deleteAllPostByAuthorId(authorId);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (PostDoesNotExistException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
